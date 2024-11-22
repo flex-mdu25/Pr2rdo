@@ -16,7 +16,7 @@
 
     <script>
       window.onload = function() {
-        liff.init({ liffId: "2006590629-7jR2wjnz" })
+        liff.init({ liffId: "2006590629-RY8VBmLz" })
           .then(() => {
             if (liff.isLoggedIn()) {
               dolink();
@@ -38,7 +38,7 @@
       }
 
       async function fetchDataFromGoogleSheet(id) {
-        const url = `https://script.google.com/macros/s/AKfycbwthK5LUlcs3Ghx9tNDY3H6JrU2lGmBDaBuP_jRcZvUD-CKYhpV89_8LpxYjPuaU-nbiA/exec?id=${id}`;
+        const url = `https://script.google.com/macros/s/AKfycbxUW5pi8jDKk8mA2v7E52Ci-14o0Wz_w7K960DPsknsqN9NgwI3EbXNIPL9yJh0TcAu/exec?id=${id}`;
         const response = await fetch(url);
         const data = await response.json();
         return data;
@@ -57,7 +57,7 @@
             liff.shareTargetPicker([
               {
                 "type": "flex",
-                "altText": "นพค.22 สนภ.2 นทพ.",
+                "altText": "สนภ.2 นทพ.",
                 "contents": 
 // -------ใส่ JSON ----------
 
