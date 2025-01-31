@@ -99,33 +99,43 @@
 <script>
 function submitAllForms() {
     document.getElementById('loadingSpinner').style.display = 'block';
-    
+
     let formData = new FormData();
+    
     for (let i = 1; i <= 4; i++) {
         let form = document.getElementById('form' + i);
         let details = form.querySelector('input[name="details' + i + '"]').value;
         let images = form.querySelector('input[name="images' + i + '"]').files;
-        
+
         formData.append('details' + i, details);
+
         for (let j = 0; j < images.length; j++) {
-            formData.append('images' + i + '[]', images[j]);
+            let reader = new FileReader();
+            reader.onload = function(event) {
+                let base64String = event.target.result.split(',')[1]; 
+                formData.append('images[]', base64String);
+            };
+            reader.readAsDataURL(images[j]);
         }
     }
-    
-    fetch('https://script.google.com/macros/s/AKfycbyI4BKihiSbbznsIkOX_E5MyCiCzJvEzJCk-PuyLhOEIDTsiB7giMDIDaR_C3pCrYbP/exec', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('loadingSpinner').style.display = 'none';
-        Swal.fire('สำเร็จ!', 'บันทึกข้อมูลเรียบร้อย', 'success');
-    })
-    .catch(error => {
-        document.getElementById('loadingSpinner').style.display = 'none';
-        Swal.fire('เกิดข้อผิดพลาด!', error.message, 'error');
-    });
+
+    setTimeout(() => {
+        fetch('https://script.google.com/macros/s/AKfycbyDVWmFOnoCXP2tysUpKdEiLGuuSWOeEb4zHEHqOEtxv_9YSRM3dAOQ6odOg0J14qCc/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            Swal.fire('สำเร็จ!', 'บันทึกข้อมูลเรียบร้อย', 'success');
+        })
+        .catch(error => {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            Swal.fire('เกิดข้อผิดพลาด!', error.message, 'error');
+        });
+    }, 2000);
 }
 </script>
+
 </body>
 </html>
