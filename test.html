@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link href="https://image.makewebeasy.net/makeweb/0/pMrtkmxgt/APNG_images/bot_02.png?v=202012190947" rel="shortcut icon" />
@@ -10,391 +9,160 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
     <title>Share Flex Message จ้ะ</title>
   </head>
   <body>
-    <p></p>
-    <p></p>
-    <p></p>
-    <center> . . . . . กำลังโหลด . . . . .</center>
+    <center>กำลังโหลด...</center>
     <center>
       <img src="https://image.makewebeasy.net/makeweb/0/pMrtkmxgt/APNG_images/loader1_1.gif?v=202012190947" alt="loading" width="126" height="129" />
-      <br>กรุณารอสักครู่
+      <br />กรุณารอสักครู่
     </center>
-    <p> wait...</p>
+
+    <!-- LIFF SDK -->
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
     <script>
-      window.onload = function (e) {
+      window.onload = function () {
         if (typeof liff === "undefined") {
           console.error("LIFF SDK is not loaded.");
           return;
         }
 
-        liff.init(
-          {
-            liffId: "2006828731-6WBlj9gQ",
-          },
-          function () {
+        liff.init({ liffId: "2006828731-6WBlj9gQ" })
+          .then(() => {
             console.log("LIFF Init Success");
             if (liff.isLoggedIn()) {
               dolink();
             } else {
-              console.log("User not logged in, redirecting to login...");
               liff.login();
             }
-          },
-          function (error) {
-            console.error("LIFF Initialization Failed:", error);
-          }
-        );
+          })
+          .catch((error) => console.error("LIFF Initialization Failed:", error));
 
-        function getParameterByName(name, url) {
-          if (!url) url = window.location.href;
-          name = name.replace(/[\[\]]/g, "\\$&");
-          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-          if (!results) return null;
-          if (!results[2]) return "";
-          return decodeURIComponent(results[2].replace(/\+/g, " "));
+        function getParameterByName(name) {
+          const url = new URL(window.location.href);
+          return url.searchParams.get(name);
         }
 
         function dolink() {
-          var j5 = getParameterByName("refer");
-          console.log("Received refer:", j5);
+          const refer = getParameterByName("refer");
+          console.log("Received refer:", refer);
 
-          if (!j5) {
+          if (!refer) {
             console.error("Refer parameter is missing.");
             return;
           }
 
-          if (j5 === "ex0") {
-            console.log("Sending message...");
-            liff
-              .sendMessages([
-                {
-                  type: "text",
-                  text: "Hello สวัสดีจร้า",
-                },
-              ])
-              .then(function () {
+          if (refer === "ex0") {
+            liff.sendMessages([{ type: "text", text: "Hello สวัสดีจร้า" }])
+              .then(() => {
                 console.log("Message sent successfully");
                 liff.closeWindow();
               })
-              .catch(function (error) {
-                console.error("Error sending message:", error);
-              });
+              .catch((error) => console.error("Error sending message:", error));
           }
 
-          if (j5 === "sharepr1") {
-            console.log("Sharing Flex Message...");
-            liff
-              .shareTargetPicker([
-{
-  "type": "carousel",
-"size": "mega",
-  "contents": [
-    {
-      "type": "bubble",
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "image",
-            "url": "https://developers-resource.landpress.line.me/fx/clip/clip1.jpg",
-            "size": "full",
-            "aspectMode": "cover",
-            "aspectRatio": "2:3",
-            "gravity": "top"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
+          if (refer === "sharepr1") {
+            liff.shareTargetPicker([
               {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "Brown's T-shirts",
-                    "size": "xl",
-                    "color": "#ffffff",
-                    "weight": "bold"
-                  }
-                ]
+                type: "flex",
+                altText: "โปรโมชั่นพิเศษ!",
+                contents: {
+                  type: "carousel",
+                  contents: [
+                    {
+                      type: "bubble",
+                      hero: {
+                        type: "image",
+                        url: "https://developers-resource.landpress.line.me/fx/clip/clip1.jpg",
+                        size: "full",
+                        aspectRatio: "2:3",
+                        aspectMode: "cover",
+                      },
+                      body: {
+                        type: "box",
+                        layout: "vertical",
+                        contents: [
+                          {
+                            type: "text",
+                            text: "Brown's T-shirts",
+                            weight: "bold",
+                            size: "xl",
+                          },
+                          {
+                            type: "text",
+                            text: "¥35,800",
+                            color: "#999999",
+                            size: "md",
+                            decoration: "line-through",
+                          },
+                          {
+                            type: "text",
+                            text: "¥75,000",
+                            weight: "bold",
+                            size: "lg",
+                          },
+                        ],
+                      },
+                    },
+                    {
+                      type: "bubble",
+                      hero: {
+                        type: "image",
+                        url: "https://developers-resource.landpress.line.me/fx/clip/clip2.jpg",
+                        size: "full",
+                        aspectRatio: "2:3",
+                        aspectMode: "cover",
+                      },
+                      body: {
+                        type: "box",
+                        layout: "vertical",
+                        contents: [
+                          {
+                            type: "text",
+                            text: "Cony's T-shirts",
+                            weight: "bold",
+                            size: "xl",
+                          },
+                          {
+                            type: "text",
+                            text: "¥35,800",
+                            color: "#999999",
+                            size: "md",
+                            decoration: "line-through",
+                          },
+                          {
+                            type: "text",
+                            text: "¥75,000",
+                            weight: "bold",
+                            size: "lg",
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
               },
-              {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "¥35,800",
-                    "color": "#ebebeb",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "¥75,000",
-                    "color": "#ffffffcc",
-                    "decoration": "line-through",
-                    "gravity": "bottom",
-                    "flex": 0,
-                    "size": "sm"
-                  }
-                ],
-                "spacing": "lg"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "filler"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                      {
-                        "type": "filler"
-                      },
-                      {
-                        "type": "icon",
-                        "url": "https://developers-resource.landpress.line.me/fx/clip/clip14.png"
-                      },
-                      {
-                        "type": "text",
-                        "text": "Add to cart",
-                        "color": "#ffffff",
-                        "flex": 0,
-                        "offsetTop": "-2px"
-                      },
-                      {
-                        "type": "filler"
-                      }
-                    ],
-                    "spacing": "sm"
-                  },
-                  {
-                    "type": "filler"
-                  }
-                ],
-                "borderWidth": "1px",
-                "cornerRadius": "4px",
-                "spacing": "sm",
-                "borderColor": "#ffffff",
-                "margin": "xxl",
-                "height": "40px"
-              }
-            ],
-            "position": "absolute",
-            "offsetBottom": "0px",
-            "offsetStart": "0px",
-            "offsetEnd": "0px",
-            "backgroundColor": "#03303Acc",
-            "paddingAll": "20px",
-            "paddingTop": "18px"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "SALE",
-                "color": "#ffffff",
-                "align": "center",
-                "size": "xs",
-                "offsetTop": "3px"
-              }
-            ],
-            "position": "absolute",
-            "cornerRadius": "20px",
-            "offsetTop": "18px",
-            "backgroundColor": "#ff334b",
-            "offsetStart": "18px",
-            "height": "25px",
-            "width": "53px"
-          }
-        ],
-        "paddingAll": "0px"
-      }
-    },
-    {
-      "type": "bubble",
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "image",
-            "url": "https://developers-resource.landpress.line.me/fx/clip/clip2.jpg",
-            "size": "full",
-            "aspectMode": "cover",
-            "aspectRatio": "2:3",
-            "gravity": "top"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "Cony's T-shirts",
-                    "size": "xl",
-                    "color": "#ffffff",
-                    "weight": "bold"
-                  }
-                ]
-              },
-              {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "¥35,800",
-                    "color": "#ebebeb",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "¥75,000",
-                    "color": "#ffffffcc",
-                    "decoration": "line-through",
-                    "gravity": "bottom",
-                    "flex": 0,
-                    "size": "sm"
-                  }
-                ],
-                "spacing": "lg"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "filler"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                      {
-                        "type": "filler"
-                      },
-                      {
-                        "type": "icon",
-                        "url": "https://developers-resource.landpress.line.me/fx/clip/clip14.png"
-                      },
-                      {
-                        "type": "text",
-                        "text": "Add to cart",
-                        "color": "#ffffff",
-                        "flex": 0,
-                        "offsetTop": "-2px"
-                      },
-                      {
-                        "type": "filler"
-                      }
-                    ],
-                    "spacing": "sm"
-                  },
-                  {
-                    "type": "filler"
-                  }
-                ],
-                "borderWidth": "1px",
-                "cornerRadius": "4px",
-                "spacing": "sm",
-                "borderColor": "#ffffff",
-                "margin": "xxl",
-                "height": "40px"
-              }
-            ],
-            "position": "absolute",
-            "offsetBottom": "0px",
-            "offsetStart": "0px",
-            "offsetEnd": "0px",
-            "backgroundColor": "#9C8E7Ecc",
-            "paddingAll": "20px",
-            "paddingTop": "18px"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "SALE",
-                "color": "#ffffff",
-                "align": "center",
-                "size": "xs",
-                "offsetTop": "3px"
-              }
-            ],
-            "position": "absolute",
-            "cornerRadius": "20px",
-            "offsetTop": "18px",
-            "backgroundColor": "#ff334b",
-            "offsetStart": "18px",
-            "height": "25px",
-            "width": "53px"
-          }
-        ],
-        "paddingAll": "0px"
-      }
-    }
-  ]
-}
-              ])
-              .then(function () {
-                console.log("Flex message sent successfully");
-                if (typeof Swal !== "undefined") {
-                  Swal.fire({
-                    position: "top-center",
-                    icon: "success",
-                    title: "ส่ง เรียบร้อย",
-                    showConfirmButton: false,
-                    timer: 1500,
-                  }).then(() => {
-                    liff.closeWindow();
-                  });
-                } else {
-                  console.error("SweetAlert2 is not loaded.");
-                }
+            ])
+              .then(() => {
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "ส่ง เรียบร้อย",
+                  showConfirmButton: false,
+                  timer: 1500,
+                }).then(() => liff.closeWindow());
               })
-              .catch(function (error) {
-                console.error("Error sharing Flex Message:", error);
-              });
+              .catch((error) => console.error("Error sharing Flex Message:", error));
           }
         }
       };
     </script>
 
-    <!-- LIFF SDK -->
-    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-
     <!-- Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
