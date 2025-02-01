@@ -9,7 +9,7 @@
 <body>
   <div class="container mt-5">
     <h1 class="text-center">บันทึกข้อมูล</h1>
-    <form id="dataForm">
+    <form id="dataForm" novalidate>
       <div class="accordion" id="accordionExample">
         <!-- กลุ่มที่ 1 -->
         <div class="card">
@@ -172,50 +172,74 @@
   <script>
     $('#dataForm').on('submit', function(e) {
       e.preventDefault();
-      
-      var formData = {};
-      var promises = [];
-      
+
+      var isValid = true;
+
+      // ตรวจสอบความถูกต้องของแต่ละกลุ่ม
       for (var i = 1; i <= 4; i++) {
-        formData['group' + i] = {
-          topic: $('#group' + i + 'Topic').val(),
-          details: $('#group' + i + 'Details').val(),
-          images: []
-        };
-        
+        if (!$('#group' + i + 'Topic').val() || !$('#group' + i + 'Details').val()) {
+          isValid = false;
+          $('#collapse' + (i === 1 ? 'One' : i === 2 ? 'Two' : i === 3 ? 'Three' : 'Four')).collapse('show');
+          alert('กรุณากรอกข้อมูลในกลุ่มที่ ' + i + ' ให้ครบถ้วน');
+          break;
+        }
+
         for (var j = 1; j <= 4; j++) {
-          var file = $('#group' + i + 'Image' + j)[0].files[0];
-          if (file) {
-            var promise = new Promise(function(resolve) {
-              var reader = new FileReader();
-              reader.onload = function(e) {
-                resolve({
-                  data: e.target.result.split(',')[1],
-                  mimeType: file.type,
-                  name: file.name
-                });
-              };
-              reader.readAsDataURL(file);
-            });
-            promises.push(promise);
+          if (!$('#group' + i + 'Image' + j)[0].files[0]) {
+            isValid = false;
+            $('#collapse' + (i === 1 ? 'One' : i === 2 ? 'Two' : i === 3 ? 'Three' : 'Four')).collapse('show');
+            alert('กรุณาอัพโหลดภาพที่ ' + j + ' ในกลุ่มที่ ' + i);
+            break;
           }
         }
       }
-      
-      Promise.all(promises).then(function(results) {
-        var index = 0;
+
+      if (isValid) {
+        // ส่งข้อมูลหากฟอร์มถูกต้อง
+        var formData = {};
+        var promises = [];
+
         for (var i = 1; i <= 4; i++) {
+          formData['group' + i] = {
+            topic: $('#group' + i + 'Topic').val(),
+            details: $('#group' + i + 'Details').val(),
+            images: []
+          };
+
           for (var j = 1; j <= 4; j++) {
-            if (results[index]) {
-              formData['group' + i].images.push(results[index]);
-              index++;
+            var file = $('#group' + i + 'Image' + j)[0].files[0];
+            if (file) {
+              var promise = new Promise(function(resolve) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                  resolve({
+                    data: e.target.result.split(',')[1],
+                    mimeType: file.type,
+                    name: file.name
+                  });
+                };
+                reader.readAsDataURL(file);
+              });
+              promises.push(promise);
             }
           }
         }
-        submitForm(formData);
-      });
+
+        Promise.all(promises).then(function(results) {
+          var index = 0;
+          for (var i = 1; i <= 4; i++) {
+            for (var j = 1; j <= 4; j++) {
+              if (results[index]) {
+                formData['group' + i].images.push(results[index]);
+                index++;
+              }
+            }
+          }
+          submitForm(formData);
+        });
+      }
     });
-    
+
     function submitForm(formData) {
       $.ajax({
         url: 'https://script.google.com/macros/s/AKfycbw7jZUrpEHyS76MmZItqRriGPKq24uTQ7v9q80n8adU0MU7FanaAZUT2HYz8V_X-a6d0w/exec',
