@@ -241,19 +241,18 @@
     });
 
     function submitForm(formData) {
-      $.ajax({
-        url: 'https://script.google.com/macros/s/AKfycbw7jZUrpEHyS76MmZItqRriGPKq24uTQ7v9q80n8adU0MU7FanaAZUT2HYz8V_X-a6d0w/exec',
-        type: 'POST',
-        data: JSON.stringify(formData),
-        contentType: 'application/json',
-        success: function(response) {
-          alert('บันทึกข้อมูลสำเร็จ ID: ' + response.id);
-          $('#dataForm')[0].reset(); // เคลียร์ฟอร์ม
-        },
-        error: function() {
-          alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล');
-        }
-      });
+      var script = document.createElement('script');
+      script.src = 'https://script.google.com/macros/s/AKfycbz9pepWIsuDPn6Qe3ylmNEZ9mjmi_q6V7ARZ4aOksXSaSLlIgNHxwgGSpkDLnQ1-e_hrA/exec?callback=handleResponse&data=' + encodeURIComponent(JSON.stringify(formData));
+      document.body.appendChild(script);
+    }
+
+    function handleResponse(response) {
+      if (response.result === 'success') {
+        alert('บันทึกข้อมูลสำเร็จ ID: ' + response.id);
+        $('#dataForm')[0].reset(); // เคลียร์ฟอร์ม
+      } else {
+        alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล');
+      }
     }
   </script>
 </body>
