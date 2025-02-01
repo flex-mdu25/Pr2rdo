@@ -1,141 +1,223 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-    <title>Web App Form</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>บันทึกข้อมูล</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container mt-4">
-    <div class="accordion" id="formAccordion">
-        <!-- สร้างฟอร์ม 4 กลุ่ม -->
+  <div class="container mt-5">
+    <h1 class="text-center">บันทึกข้อมูล</h1>
+    <form id="dataForm">
+      <div class="accordion" id="accordionExample">
+        <!-- กลุ่มที่ 1 -->
         <div class="card">
-            <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne">
-                        กลุ่มที่ 1
-                    </button>
-                </h2>
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                กลุ่มที่ 1
+              </button>
+            </h2>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="group1Topic">หัวข้อบันทึก</label>
+                <input type="text" class="form-control" id="group1Topic" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Details">รายละเอียด</label>
+                <textarea class="form-control" id="group1Details" rows="3" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="group1Image1">ภาพที่ 1</label>
+                <input type="file" class="form-control-file" id="group1Image1" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image2">ภาพที่ 2</label>
+                <input type="file" class="form-control-file" id="group1Image2" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image3">ภาพที่ 3</label>
+                <input type="file" class="form-control-file" id="group1Image3" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image4">ภาพที่ 4</label>
+                <input type="file" class="form-control-file" id="group1Image4" required>
+              </div>
             </div>
-            <div id="collapseOne" class="collapse show" data-parent="#formAccordion">
-                <div class="card-body">
-                    <form id="form1">
-                        <label>รายละเอียด:</label>
-                        <input type="text" name="details1" class="form-control" required>
-                        <label>อัพโหลดรูปภาพ (4 รูป):</label>
-                        <input type="file" name="images1" class="form-control" multiple required>
-                    </form>
-                </div>
-            </div>
+          </div>
         </div>
+        <!-- กลุ่มที่ 2 -->
         <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo">
-                        กลุ่มที่ 2
-                    </button>
-                </h2>
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                กลุ่มที่ 2
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="group1Topic">หัวข้อบันทึก</label>
+                <input type="text" class="form-control" id="group1Topic" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Details">รายละเอียด</label>
+                <textarea class="form-control" id="group1Details" rows="3" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="group1Image1">ภาพที่ 1</label>
+                <input type="file" class="form-control-file" id="group1Image1" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image2">ภาพที่ 2</label>
+                <input type="file" class="form-control-file" id="group1Image2" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image3">ภาพที่ 3</label>
+                <input type="file" class="form-control-file" id="group1Image3" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image4">ภาพที่ 4</label>
+                <input type="file" class="form-control-file" id="group1Image4" required>
+              </div>
             </div>
-            <div id="collapseTwo" class="collapse" data-parent="#formAccordion">
-                <div class="card-body">
-                    <form id="form2">
-                        <label>รายละเอียด:</label>
-                        <input type="text" name="details2" class="form-control" required>
-                        <label>อัพโหลดรูปภาพ (4 รูป):</label>
-                        <input type="file" name="images2" class="form-control" multiple required>
-                    </form>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class="card">
-            <div class="card-header" id="headingThree">
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree">
-                        กลุ่มที่ 3
-                    </button>
-                </h2>
-            </div>
-            <div id="collapseThree" class="collapse" data-parent="#formAccordion">
-                <div class="card-body">
-                    <form id="form3">
-                        <label>รายละเอียด:</label>
-                        <input type="text" name="details3" class="form-control" required>
-                        <label>อัพโหลดรูปภาพ (4 รูป):</label>
-                        <input type="file" name="images3" class="form-control" multiple required>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingFour">
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour">
-                        กลุ่มที่ 4
-                    </button>
-                </h2>
-            </div>
-            <div id="collapseFour" class="collapse" data-parent="#formAccordion">
-                <div class="card-body">
-                    <form id="form4">
-                        <label>รายละเอียด:</label>
-                        <input type="text" name="details4" class="form-control" required>
-                        <label>อัพโหลดรูปภาพ (4 รูป):</label>
-                        <input type="file" name="images4" class="form-control" multiple required>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <button type="button" onclick="submitAllForms()" class="btn btn-success mt-3">บันทึกทั้งหมด</button>
-    <div id="loadingSpinner" class="text-center mt-3" style="display: none;">
-        <div class="spinner-border text-primary" role="status">
-            <span class="sr-only">กำลังบันทึก...</span>
-        </div>
-        <p>กำลังบันทึกข้อมูล...</p>
-    </div>
-</div>
-<script>
-function submitAllForms() {
-    document.getElementById('loadingSpinner').style.display = 'block';
 
-    let formData = new FormData();
-    
-    for (let i = 1; i <= 4; i++) {
-        let form = document.getElementById('form' + i);
-        let details = form.querySelector('input[name="details' + i + '"]').value;
-        let images = form.querySelector('input[name="images' + i + '"]').files;
+        <!-- กลุ่มที่ 3 -->
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                กลุ่มที่ 3
+              </button>
+            </h2>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="group1Topic">หัวข้อบันทึก</label>
+                <input type="text" class="form-control" id="group1Topic" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Details">รายละเอียด</label>
+                <textarea class="form-control" id="group1Details" rows="3" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="group1Image1">ภาพที่ 1</label>
+                <input type="file" class="form-control-file" id="group1Image1" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image2">ภาพที่ 2</label>
+                <input type="file" class="form-control-file" id="group1Image2" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image3">ภาพที่ 3</label>
+                <input type="file" class="form-control-file" id="group1Image3" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image4">ภาพที่ 4</label>
+                <input type="file" class="form-control-file" id="group1Image4" required>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        formData.append('details' + i, details);
-
-        for (let j = 0; j < images.length; j++) {
-            let reader = new FileReader();
-            reader.onload = function(event) {
-                let base64String = event.target.result.split(',')[1]; 
-                formData.append('images[]', base64String);
-            };
-            reader.readAsDataURL(images[j]);
+        <!-- กลุ่มที่ 4 -->
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                กลุ่มที่ 4
+              </button>
+            </h2>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="group1Topic">หัวข้อบันทึก</label>
+                <input type="text" class="form-control" id="group1Topic" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Details">รายละเอียด</label>
+                <textarea class="form-control" id="group1Details" rows="3" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="group1Image1">ภาพที่ 1</label>
+                <input type="file" class="form-control-file" id="group1Image1" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image2">ภาพที่ 2</label>
+                <input type="file" class="form-control-file" id="group1Image2" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image3">ภาพที่ 3</label>
+                <input type="file" class="form-control-file" id="group1Image3" required>
+              </div>
+              <div class="form-group">
+                <label for="group1Image4">ภาพที่ 4</label>
+                <input type="file" class="form-control-file" id="group1Image4" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- กลุ่มที่ 3 และ 4 -->
+        <!-- โครงสร้างเหมือนกลุ่มที่ 1 -->
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">บันทึกข้อมูล</button>
+    </form>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $('#dataForm').on('submit', function(e) {
+      e.preventDefault();
+      
+      var formData = {};
+      for (var i = 1; i <= 4; i++) {
+        formData['group' + i] = {
+          topic: $('#group' + i + 'Topic').val(),
+          details: $('#group' + i + 'Details').val(),
+          images: []
+        };
+        
+        for (var j = 1; j <= 4; j++) {
+          var file = $('#group' + i + 'Image' + j)[0].files[0];
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            formData['group' + i].images.push({
+              data: e.target.result.split(',')[1],
+              mimeType: file.type,
+              name: file.name
+            });
+            
+            if (i === 4 && j === 4) {
+              submitForm(formData);
+            }
+          };
+          reader.readAsDataURL(file);
         }
+      }
+    });
+    
+    function submitForm(formData) {
+      $.ajax({
+        url: 'https://script.google.com/macros/s/AKfycbw7jZUrpEHyS76MmZItqRriGPKq24uTQ7v9q80n8adU0MU7FanaAZUT2HYz8V_X-a6d0w/exec',
+        type: 'POST',
+        data: JSON.stringify(formData),
+        contentType: 'application/json',
+        success: function(response) {
+          alert('บันทึกข้อมูลสำเร็จ ID: ' + response.id);
+        },
+        error: function() {
+          alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล');
+        }
+      });
     }
-
-    setTimeout(() => {
-        fetch('https://script.google.com/macros/s/AKfycbyDVWmFOnoCXP2tysUpKdEiLGuuSWOeEb4zHEHqOEtxv_9YSRM3dAOQ6odOg0J14qCc/exec', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('loadingSpinner').style.display = 'none';
-            Swal.fire('สำเร็จ!', 'บันทึกข้อมูลเรียบร้อย', 'success');
-        })
-        .catch(error => {
-            document.getElementById('loadingSpinner').style.display = 'none';
-            Swal.fire('เกิดข้อผิดพลาด!', error.message, 'error');
-        });
-    }, 2000);
-}
-</script>
-
+  </script>
 </body>
 </html>
