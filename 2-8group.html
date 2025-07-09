@@ -38,7 +38,7 @@
       }
 
       async function fetchDataFromGoogleSheet(id) {
-        const url = `https://script.google.com/macros/s/AKfycbxUW5pi8jDKk8mA2v7E52Ci-14o0Wz_w7K960DPsknsqN9NgwI3EbXNIPL9yJh0TcAu/exec?id=${id}`;
+        const url = `https://script.google.com/macros/s/AKfycbwAZRxxH5kKefDgOQsr7m0YS1U3DcvwkNCiE50ZtSJaIPD8-QMJfffGAIWEq9lqFGB_4g/exec?id=${id}`;
         const response = await fetch(url);
         const data = await response.json();
         return data;
@@ -62,344 +62,769 @@
 // -------ใส่ JSON ----------
 
 {
-  "type": "bubble",
-  "size": "giga",
-  "header": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "image",
-        "url": "https://j5pr.rtarf.mi.th/FlexMsg/PRD/images/2rdo/h3.jpg",
-        "size": "full",
-        "aspectRatio": "1400:200",
-        "align": "center",
-        "gravity": "center",
-        "aspectMode": "cover",
-        "offsetTop": "none",
-        "animated": true
-      }
-    ],
-    "paddingAll": "none"
-  },
-  "hero": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "size": "mega",
+      "header": {
         "type": "box",
         "layout": "vertical",
         "contents": [
           {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "image",
-                    "size": "full",
-                    "aspectRatio": "16:10",
-                    "url": data.imagetitle,
-                    "aspectMode": "cover",
-                    "action": {
-                      "type": "uri",
-                      "label": "action",
-                      "uri": data.imagetitle
-                    }
-                  }
-                ],
-                "width": "100%",
-                "cornerRadius": "xl"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "size": "sm",
-                    "weight": "bold",
-                    "align": "start",
-                    "wrap": true,
-                    "contents": [
-                      {
-                        "type": "span",
-                        "color": "#293377",
-                        "decoration": "underline",
-                        "size": "lg",
-                        "text": data.title
-                      }
-                    ],
-                    "margin": "lg",
-                    "offsetStart": "sm",
-                    "offsetEnd": "sm",
-                    "offsetBottom": "md"
-                  },
-                  {
-                    "type": "text",
-                    "text": data.description,
-                    "wrap": true,
-                    "size": "sm"
-                  }
-                ],
-                "paddingAll": "md",
-                "width": "100%"
-              },
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                      {
-                        "type": "image",
-                        "size": "full",
-                        "aspectMode": "cover",
-                        "align": "center",
-                        "gravity": "center",
-                        "aspectRatio": "16:9",
-                        "action": {
-                          "type": "uri",
-                          "label": "action",
-                          "uri": data.image1
-                        },
-                        "url": data.image1
-                      }
-                    ],
-                    "borderWidth": "none",
-                    "width": "33%",
-                    "cornerRadius": "sm",
-                    "offsetEnd": "xs"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "horizontal",
-                    "contents": [
-                      {
-                        "type": "image",
-                        "url": data.image2,
-                        "size": "full",
-                        "aspectMode": "cover",
-                        "aspectRatio": "16:9",
-                        "action": {
-                          "type": "uri",
-                          "label": "action",
-                          "uri": data.image2
-                        }
-                      }
-                    ],
-                    "width": "33%",
-                    "offsetEnd": "none",
-                    "paddingEnd": "none",
-                    "cornerRadius": "sm",
-                    "offsetStart": "xs"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "horizontal",
-                    "contents": [
-                      {
-                        "type": "image",
-                        "url": data.image3,
-                        "aspectMode": "cover",
-                        "size": "full",
-                        "aspectRatio": "16:9",
-                        "action": {
-                          "type": "uri",
-                          "label": "action",
-                          "uri": data.image3
-                        }
-                      }
-                    ],
-                    "width": "33%",
-                    "cornerRadius": "sm",
-                    "offsetStart": "5px"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": []
-                  }
-                ],
-                "borderWidth": "none",
-                "alignItems": "flex-start",
-                "paddingAll": "xs"
-              }
-            ]
+            "type": "image",
+            "url": "https://afdcpr.rtarf.mi.th/Flex/2RDO/%E0%B8%9A%E0%B8%81.%E0%B8%AA%E0%B8%99%E0%B8%A0.2%20%E0%B8%99%E0%B8%97%E0%B8%9E./intro.jpg",
+            "size": "full",
+            "margin": "none",
+            "aspectRatio": "2:3",
+            "aspectMode": "cover",
+            "offsetTop": "sm",
+            "offsetStart": "none",
+            "offsetEnd": "none"
           },
+          {
+            "type": "text",
+            "text": data.group1_date,
+            "weight": "bold",
+            "align": "center",
+            "color": "#f9fbfc",
+            "size": "lg",
+            "offsetTop": "sm"
+          }
+        ],
+        "backgroundColor": "#010150",
+        "spacing": "none",
+        "margin": "none",
+        "borderWidth": "none",
+        "cornerRadius": "none",
+        "paddingAll": "md",
+        "offsetStart": "none"
+      },
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
           {
             "type": "box",
             "layout": "horizontal",
             "contents": [
               {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                  {
-                    "type": "icon",
-                    "url": "https://j5pr.rtarf.mi.th/FlexMsg/PRD/images/2rdo/Facebook_logo_square.png",
-                    "size": "4xl",
-                    "margin": "none",
-                    "offsetStart": "xxl",
-                    "offsetEnd": "none",
-                    "offsetBottom": "none",
-                    "offsetTop": "xs"
-                  }
-                ],
-                "borderWidth": "normal",
-                "width": "33%",
+                "type": "image",
+                "url": "https://img2.pic.in.th/pic/a229d55e7804dfacea.jpg",
+                "aspectMode": "cover",
+                "align": "start",
+                "size": "full",
                 "action": {
                   "type": "uri",
-                  "label": "FB",
-                  "uri": data.fblink
-                },
-                "justifyContent": "center"
+                  "label": "action",
+                  "uri": "https://2rdo.rtarf.mi.th/"
+                }
               },
               {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                  {
-                    "type": "icon",
-                    "url": "https://j5pr.rtarf.mi.th/FlexMsg/PRD/images/2rdo/ttok.png",
-                    "size": "4xl",
-                    "offsetTop": "xs",
-                    "offsetEnd": "none"
-                  }
-                ],
-                "width": "33%",
+                "type": "image",
+                "url": "https://img5.pic.in.th/file/secure-sv1/a3b805f1ee6205ac91.jpg",
+                "size": "full",
+                "aspectMode": "cover",
                 "action": {
                   "type": "uri",
-                  "label": "Tiktok",
-                  "uri": data.tklink
-                },
-                "justifyContent": "center"
+                  "label": "action",
+                  "uri": "https://www.facebook.com/?locale=th_TH"
+                }
               },
               {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                  {
-                    "type": "icon",
-                    "url": "https://j5pr.rtarf.mi.th/FlexMsg/PRD/images/Flex-%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99Influ/btsweb.png",
-                    "size": "4xl",
-                    "offsetTop": "xs",
-                    "offsetEnd": "xxl"
-                  }
-                ],
-                "width": "33%",
+                "type": "image",
+                "url": "https://img5.pic.in.th/file/secure-sv1/a4.jpg",
+                "size": "full",
+                "aspectMode": "cover",
                 "action": {
                   "type": "uri",
-                  "label": "Website",
-                  "uri": data.weblink
-                },
-                "justifyContent": "center"
+                  "label": "action",
+                  "uri": "https://www.instagram.com/explore/locations/274653324/"
+                }
+              },
+              {
+                "type": "image",
+                "url": "https://img2.pic.in.th/pic/a5518c64bf45751ccd.jpg",
+                "size": "full",
+                "aspectMode": "cover",
+                "action": {
+                  "type": "uri",
+                  "label": "action",
+                  "uri": "https://www.tiktok.com/@2nd_regional_development?_t=8rgJsYKALvs&_r=1"
+                }
               }
             ],
-            "paddingTop": "xs",
-            "paddingEnd": "xs",
-            "offsetTop": "xs"
+            "backgroundColor": "#010150"
           }
         ],
-        "backgroundColor": "#ffffff",
-        "borderWidth": "semi-bold",
-        "borderColor": "#005a91",
-        "cornerRadius": "xxl",
-        "offsetTop": "md",
-        "offsetBottom": "lg",
-        "paddingAll": "md"
-      }
-    ],
-    "paddingAll": "lg",
-    "paddingBottom": "lg",
-    "background": {
-      "type": "linearGradient",
-      "angle": "0deg",
-      "startColor": "#E6E6FA",
-      "endColor": "#005a91"
-    }
-  },
-  "body": {
-    "type": "box",
-    "layout": "horizontal",
-    "contents": [
-      {
+        "paddingAll": "lg",
+        "backgroundColor": "#010150",
+        "offsetTop": "none"
+      },
+      "footer": {
         "type": "box",
         "layout": "vertical",
         "contents": [
           {
             "type": "image",
-            "url": "https://j5pr.rtarf.mi.th/FlexMsg/PRD/images/Flex-PR%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%A7%E0%B8%B1%E0%B8%99/%E0%B8%9D%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%B9%E0%B8%9B/Icon%20Flex%20Message%202024/read.png",
+            "url": "https://afdcpr.rtarf.mi.th/Flex/2RDO/%E0%B8%9A%E0%B8%81.%E0%B8%AA%E0%B8%99%E0%B8%A0.2%20%E0%B8%99%E0%B8%97%E0%B8%9E./char.jpg",
             "size": "full",
-            "aspectRatio": "10:4",
+            "aspectMode": "cover",
+            "aspectRatio": "7:1.2",
             "action": {
               "type": "uri",
-              "label": "อ่านเพิ่มเติม",
-              "uri": data.newsfblink
-            }
-          }
-        ]
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [],
-        "width": "5%"
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "image",
-            "url": "https://j5pr.rtarf.mi.th/FlexMsg/PRD/images/Flex-PR%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%A7%E0%B8%B1%E0%B8%99/%E0%B8%9D%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%B9%E0%B8%9B/Icon%20Flex%20Message%202024/share2.png",
-            "size": "full",
-            "aspectRatio": "10:4",
-            "action": {
-              "type": "uri",
-              "label": "คลิกเพื่อแชร์",
+              "label": "action",
               "uri": data.liffshare
             }
           }
-        ]
+        ],
+        "spacing": "xxl",
+        "margin": "xxl",
+        "paddingAll": "md",
+        "backgroundColor": "#FFFFFF"
       }
-    ],
-    "backgroundColor": "#E6E6FA",
-    "offsetTop": "xs",
-    "paddingTop": "1px",
-    "paddingEnd": "lg",
-    "paddingBottom": "5px"
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "image",
-        "url": "https://j5pr.rtarf.mi.th/FlexMsg/PRD/images/2rdo/f5.jpg",
-        "size": "full",
-        "aspectRatio": "160:10",
-        "aspectMode": "cover"
+    },
+    {
+      "type": "bubble",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "size": "full",
+            "aspectRatio": "10:2",
+            "aspectMode": "cover",
+            "url": "https://raw.githubusercontent.com/flex-mdu25/Pr2rdo/refs/heads/main/img/banner2.jpg"
+          }
+        ],
+        "paddingAll": "none",
+        "backgroundColor": "#042e6c"
+      },
+      "hero": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group1_img1,
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:1"
+          },
+          {
+            "type": "text",
+            "text": data.group1_description,
+            "wrap": true,
+            "margin": "sm"
+          }
+        ],
+        "paddingAll": "sm"
+      },
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group1_img2,
+            "margin": "xs"
+          },
+          {
+            "type": "image",
+            "url": data.group1_img3
+          },
+          {
+            "type": "image",
+            "url": data.group1_img4
+          }
+        ],
+        "paddingAll": "lg",
+        "backgroundColor": "#010150"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://afdcpr.rtarf.mi.th/Flex/2RDO/%E0%B8%9A%E0%B8%81.%E0%B8%AA%E0%B8%99%E0%B8%A0.2%20%E0%B8%99%E0%B8%97%E0%B8%9E./read.jpg",
+            "size": "full",
+            "aspectRatio": "11:2",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": data.group1_link
+            }
+          }
+        ],
+        "spacing": "xxl",
+        "margin": "xxl",
+        "paddingAll": "md",
+        "backgroundColor": "#FFFFFF"
       }
-    ],
-    "paddingAll": "none"
-  },
-  "styles": {
-    "hero": {
-      "backgroundColor": "#d6ebf5"
     },
-    "body": {
-      "backgroundColor": "#d6ebf5"
+    {
+      "type": "bubble",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://raw.githubusercontent.com/flex-mdu25/Pr2rdo/refs/heads/main/img/banner2.jpg",
+            "size": "full",
+            "aspectRatio": "10:2",
+            "aspectMode": "cover"
+          }
+        ],
+        "paddingAll": "none",
+        "backgroundColor": "#042e6c"
+      },
+      "hero": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group2_img1,
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:1"
+          },
+          {
+            "type": "text",
+            "text": data.group2_description,
+            "wrap": true,
+            "margin": "sm"
+          }
+        ],
+        "paddingAll": "sm"
+      },
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group2_img2,
+            "margin": "xs"
+          },
+          {
+            "type": "image",
+            "url": data.group2_img3
+          },
+          {
+            "type": "image",
+            "url": data.group2_img4
+          }
+        ],
+        "paddingAll": "lg",
+        "backgroundColor": "#010150"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://afdcpr.rtarf.mi.th/Flex/2RDO/%E0%B8%9A%E0%B8%81.%E0%B8%AA%E0%B8%99%E0%B8%A0.2%20%E0%B8%99%E0%B8%97%E0%B8%9E./read.jpg",
+            "size": "full",
+            "aspectRatio": "11:2",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": data.group2_link
+            }
+          }
+        ],
+        "spacing": "xxl",
+        "margin": "xxl",
+        "paddingAll": "md",
+        "backgroundColor": "#FFFFFF"
+      }
     },
-    "footer": {
-      "backgroundColor": "#ffffff"
+    {
+      "type": "bubble",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://raw.githubusercontent.com/flex-mdu25/Pr2rdo/refs/heads/main/img/banner2.jpg",
+            "size": "full",
+            "aspectRatio": "10:2",
+            "aspectMode": "cover"
+          }
+        ],
+        "paddingAll": "none",
+        "backgroundColor": "#042e6c"
+      },
+      "hero": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group3_img1,
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:1"
+          },
+          {
+            "type": "text",
+            "text": data.group3_description,
+            "wrap": true,
+            "margin": "sm"
+          }
+        ],
+        "paddingAll": "sm"
+      },
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group3_img2,
+            "margin": "xs"
+          },
+          {
+            "type": "image",
+            "url": data.group3_img3
+          },
+          {
+            "type": "image",
+            "url": data.group3_img4
+          }
+        ],
+        "paddingAll": "lg",
+        "backgroundColor": "#010150"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://afdcpr.rtarf.mi.th/Flex/2RDO/%E0%B8%9A%E0%B8%81.%E0%B8%AA%E0%B8%99%E0%B8%A0.2%20%E0%B8%99%E0%B8%97%E0%B8%9E./read.jpg",
+            "size": "full",
+            "aspectRatio": "11:2",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": data.group3_link
+            }
+          }
+        ],
+        "spacing": "xxl",
+        "margin": "xxl",
+        "paddingAll": "md",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "type": "bubble",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://raw.githubusercontent.com/flex-mdu25/Pr2rdo/refs/heads/main/img/banner2.jpg",
+            "size": "full",
+            "aspectRatio": "10:2",
+            "aspectMode": "cover"
+          }
+        ],
+        "paddingAll": "none",
+        "backgroundColor": "#042e6c"
+      },
+      "hero": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group4_img1,
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:1"
+          },
+          {
+            "type": "text",
+            "text": data.group4_description,
+            "wrap": true,
+            "margin": "sm"
+          }
+        ],
+        "paddingAll": "sm"
+      },
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group4_img2,
+            "margin": "xs"
+          },
+          {
+            "type": "image",
+            "url": data.group4_img3
+          },
+          {
+            "type": "image",
+            "url": data.group4_img4
+          }
+        ],
+        "paddingAll": "lg",
+        "backgroundColor": "#010150"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://afdcpr.rtarf.mi.th/Flex/2RDO/%E0%B8%9A%E0%B8%81.%E0%B8%AA%E0%B8%99%E0%B8%A0.2%20%E0%B8%99%E0%B8%97%E0%B8%9E./read.jpg",
+            "size": "full",
+            "aspectRatio": "11:2",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": data.group4_link
+            }
+          }
+        ],
+        "spacing": "xxl",
+        "margin": "xxl",
+        "paddingAll": "md",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "type": "bubble",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://raw.githubusercontent.com/flex-mdu25/Pr2rdo/refs/heads/main/img/banner2.jpg",
+            "size": "full",
+            "aspectRatio": "10:2",
+            "aspectMode": "cover"
+          }
+        ],
+        "paddingAll": "none",
+        "backgroundColor": "#042e6c"
+      },
+      "hero": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group5_img1,
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:1"
+          },
+          {
+            "type": "text",
+            "text": data.group5_description,
+            "wrap": true,
+            "margin": "sm"
+          }
+        ],
+        "paddingAll": "sm"
+      },
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group5_img2,
+            "margin": "xs"
+          },
+          {
+            "type": "image",
+            "url": data.group5_img3
+          },
+          {
+            "type": "image",
+            "url": data.group5_img4
+          }
+        ],
+        "paddingAll": "lg",
+        "backgroundColor": "#010150"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://afdcpr.rtarf.mi.th/Flex/2RDO/%E0%B8%9A%E0%B8%81.%E0%B8%AA%E0%B8%99%E0%B8%A0.2%20%E0%B8%99%E0%B8%97%E0%B8%9E./read.jpg",
+            "size": "full",
+            "aspectRatio": "11:2",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": data.group5_link
+            }
+          }
+        ],
+        "spacing": "xxl",
+        "margin": "xxl",
+        "paddingAll": "md",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "type": "bubble",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://raw.githubusercontent.com/flex-mdu25/Pr2rdo/refs/heads/main/img/banner2.jpg",
+            "size": "full",
+            "aspectRatio": "10:2",
+            "aspectMode": "cover"
+          }
+        ],
+        "paddingAll": "none",
+        "backgroundColor": "#042e6c"
+      },
+      "hero": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group6_img1,
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:1"
+          },
+          {
+            "type": "text",
+            "text": data.group6_description,
+            "wrap": true,
+            "margin": "sm"
+          }
+        ],
+        "paddingAll": "sm"
+      },
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group6_img2,
+            "margin": "xs"
+          },
+          {
+            "type": "image",
+            "url": data.group6_img3
+          },
+          {
+            "type": "image",
+            "url": data.group6_img4
+          }
+        ],
+        "paddingAll": "lg",
+        "backgroundColor": "#010150"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://afdcpr.rtarf.mi.th/Flex/2RDO/%E0%B8%9A%E0%B8%81.%E0%B8%AA%E0%B8%99%E0%B8%A0.2%20%E0%B8%99%E0%B8%97%E0%B8%9E./read.jpg",
+            "size": "full",
+            "aspectRatio": "11:2",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": data.group6_link
+            }
+          }
+        ],
+        "spacing": "xxl",
+        "margin": "xxl",
+        "paddingAll": "md",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "type": "bubble",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://raw.githubusercontent.com/flex-mdu25/Pr2rdo/refs/heads/main/img/banner2.jpg",
+            "size": "full",
+            "aspectRatio": "10:2",
+            "aspectMode": "cover"
+          }
+        ],
+        "paddingAll": "none",
+        "backgroundColor": "#042e6c"
+      },
+      "hero": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group7_img1,
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:1"
+          },
+          {
+            "type": "text",
+            "text": data.group7_description,
+            "wrap": true,
+            "margin": "sm"
+          }
+        ],
+        "paddingAll": "sm"
+      },
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group7_img2,
+            "margin": "xs"
+          },
+          {
+            "type": "image",
+            "url": data.group7_img3
+          },
+          {
+            "type": "image",
+            "url": data.group7_img4
+          }
+        ],
+        "paddingAll": "lg",
+        "backgroundColor": "#010150"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://afdcpr.rtarf.mi.th/Flex/2RDO/%E0%B8%9A%E0%B8%81.%E0%B8%AA%E0%B8%99%E0%B8%A0.2%20%E0%B8%99%E0%B8%97%E0%B8%9E./read.jpg",
+            "size": "full",
+            "aspectRatio": "11:2",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": data.group7_link
+            }
+          }
+        ],
+        "spacing": "xxl",
+        "margin": "xxl",
+        "paddingAll": "md",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "type": "bubble",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://raw.githubusercontent.com/flex-mdu25/Pr2rdo/refs/heads/main/img/banner2.jpg",
+            "size": "full",
+            "aspectRatio": "10:2",
+            "aspectMode": "cover"
+          }
+        ],
+        "paddingAll": "none",
+        "backgroundColor": "#042e6c"
+      },
+      "hero": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group8_img1,
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:1"
+          },
+          {
+            "type": "text",
+            "text": data.group8_description,
+            "wrap": true,
+            "margin": "sm"
+          }
+        ],
+        "paddingAll": "sm"
+      },
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": data.group8_img2,
+            "margin": "xs"
+          },
+          {
+            "type": "image",
+            "url": data.group8_img3
+          },
+          {
+            "type": "image",
+            "url": data.group8_img4
+          }
+        ],
+        "paddingAll": "lg",
+        "backgroundColor": "#010150"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://afdcpr.rtarf.mi.th/Flex/2RDO/%E0%B8%9A%E0%B8%81.%E0%B8%AA%E0%B8%99%E0%B8%A0.2%20%E0%B8%99%E0%B8%97%E0%B8%9E./read.jpg",
+            "size": "full",
+            "aspectRatio": "11:2",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": data.group8_link
+            }
+          }
+        ],
+        "spacing": "xxl",
+        "margin": "xxl",
+        "paddingAll": "md",
+        "backgroundColor": "#FFFFFF"
+      }
     }
-  }
+  ]
 }
                   
 
